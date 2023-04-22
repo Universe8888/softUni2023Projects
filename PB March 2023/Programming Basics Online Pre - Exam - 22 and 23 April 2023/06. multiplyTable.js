@@ -1,6 +1,6 @@
 function multiplyTable(input) {
     const num = input[0];
-    const firstDigit = parseInt(num[2]);
+    const firstDigit = parseInt(num[2]); //can be used Number as well
     const secondDigit = parseInt(num[1]);
     const thirdDigit = parseInt(num[0]);
   
