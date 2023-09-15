@@ -45,4 +45,4 @@ function theatrePromotions(dayType, age) {
     console.log(ticketPrice + "$");
 }
 
-theatrePromotions("Weekend",3)
+theatrePromotions("Weekend",3);
