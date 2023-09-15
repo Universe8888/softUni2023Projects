@@ -9,4 +9,4 @@ function sumOfOddNumbers(n) {
     console.log("Sum: " + sum);
 }
 
-sumOfOddNumbers(100)
+sumOfOddNumbers(100);
