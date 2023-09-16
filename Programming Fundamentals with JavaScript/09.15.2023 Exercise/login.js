@@ -6,7 +6,7 @@ function login(data) {
     for (let i = 1; i < data.length; i++) {
         if (data[i] !== correctPassword) {
             attempts++;
-            if (attempts === 3) {
+            if (attempts === 4) {
                 console.log(`User ${username} blocked!`);
                 return;
             } else {
