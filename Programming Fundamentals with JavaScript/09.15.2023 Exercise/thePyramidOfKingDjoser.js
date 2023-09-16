@@ -9,15 +9,15 @@ function pyramidMaterials(base, increment) {
 
     while (base > 0) {
         steps++;
-        // If it's the top of the pyramid
+        
         if (base === 1 || base === 2) {
             gold += base * base * increment;
         } else {
-            // Calculate stone
+            
             let stoneArea = (base - 2) * (base - 2);
             stone += stoneArea * increment;
 
-            // If it's the fifth step, use lapis lazuli. Otherwise, use marble.
+            
             if (steps % 5 === 0) {
                 lapis += (base * base - stoneArea) * increment;
             } else {
