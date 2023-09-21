@@ -15,5 +15,4 @@ function printTriples(n) {
     }
 }
 
-// Test the function with input '3'
 printTriples('3');
