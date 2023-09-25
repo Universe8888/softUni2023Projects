@@ -4,7 +4,7 @@ function printChessboard(size) {
     for (let row = 0; row < size; row++) {
         result += ' <div>\n';
         for (let col = 0; col < size; col++) {
-            let color = 'white';
+            let color = 'white';  //let color = (row + col) % 2 === 0 ? 'black' : 'white';
             if ((row + col) % 2 === 0) {
                 color = 'black';
             }
@@ -17,6 +17,5 @@ function printChessboard(size) {
     return result;
 }
 
-// Example Usage:
 let chessboard = printChessboard(5);
 console.log(chessboard);
