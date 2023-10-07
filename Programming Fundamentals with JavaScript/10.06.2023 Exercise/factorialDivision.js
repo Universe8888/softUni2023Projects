@@ -17,3 +17,5 @@ function divideFactorials(numOne, numTwo) {
 }
 
 divideFactorials(5, 2);
+
+// Judge does not support this solution.
