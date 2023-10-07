@@ -1,12 +1,11 @@
-function factorial(n) {
-    if (n === 1) {
-        return 1;
-    } 
-    
-    return n * factorial(n - 1);
-}
-
 function divideFactorials(numOne, numTwo) {
+  
+    function factorial(n) {
+        if (n === 0) {
+            return 1;
+        } 
+        return n * factorial(n - 1);
+    }
 
     let factorialOne = factorial(numOne);
     let factorialTwo = factorial(numTwo);
@@ -16,6 +15,8 @@ function divideFactorials(numOne, numTwo) {
     console.log(result.toFixed(2));
 }
 
+
 divideFactorials(5, 2);
 
-// Judge does not support this solution.
+
+//functions needed to be nested for Judge to check them! That was the issue!
