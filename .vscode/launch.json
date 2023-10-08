@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "P04_Password_Validator",
+            "request": "launch",
+            "mainClass": "Day08_Methods_Exercise.P04_Password_Validator"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${file}"
+        }
+    ]
+}
