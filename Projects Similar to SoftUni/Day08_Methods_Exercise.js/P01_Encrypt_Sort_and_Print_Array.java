@@ -1,5 +1,6 @@
 package ME3_Arrays_More_Exercise;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class P01_Encrypt_Sort_and_Print_Array {
@@ -23,6 +24,9 @@ public class P01_Encrypt_Sort_and_Print_Array {
                 }
             }
         }
+        
+        Arrays.sort(array);
+
         for (int number : array) {
             System.out.println(number);
         }
