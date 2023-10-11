@@ -13,5 +13,5 @@ function countBinaryDigit(n, b) {
     console.log(`Digit ${b} appears ${count} times in it.`);
 
 }
-
-countBinaryDigit(20, 0);
+// countBinaryDigit(20, 0);
+countBinaryDigit(15, 1);
