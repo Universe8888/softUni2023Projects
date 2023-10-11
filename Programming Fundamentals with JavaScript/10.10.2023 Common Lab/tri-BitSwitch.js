@@ -10,7 +10,6 @@ function triBitSwitch(n, p) {
 
     return result;
 
-
 }
 
 let result1 = triBitSwitch(1234, 7);
