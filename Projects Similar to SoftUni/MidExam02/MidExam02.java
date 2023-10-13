@@ -1,9 +1,9 @@
-package MidExam02;
+
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class P03_Numbers {
+public class MidExam02 {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
