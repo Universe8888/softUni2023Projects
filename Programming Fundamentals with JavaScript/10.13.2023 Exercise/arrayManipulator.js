@@ -1,67 +1,48 @@
-function manipulator(arr, commands) {
+function arrayManipulator(arr, commands) {
+    for (let i = 0; i < commands.length; i++) {
+        let commandParts = commands[i].split(' ');
+        let action = commandParts[0];
 
-    function add(params) {
-        arr.splice(params[0], 0, params[1]);
-    }
-
-    function addMany(params) {
-        const index = params[0];
-        const elementsToAdd = params.slice(1);
-        for(let i = 0; i < elementsToAdd.length; i++) {
-            arr.splice(index + i, 0, elementsToAdd[i]);
+        switch (action) {
+            case 'add':
+                let addIndex = parseInt(commandParts[1]);
+                let addElement = parseInt(commandParts[2]);
+                arr.splice(addIndex, 0, addElement);
+                break;
+            case 'addMany':
+                let addManyIndex = parseInt(commandParts[1]);
+                let addManyElements = commandParts.slice(2).map(Number);
+                for (let j = 0; j < addManyElements.length; j++) {
+                    arr.splice(addManyIndex + j, 0, addManyElements[j]);
+                }
+                break;
+            case 'contains':
+                console.log(arr.indexOf(parseInt(commandParts[1])));
+                break;
+            case 'remove':
+                arr.splice(parseInt(commandParts[1]), 1);
+                break;
+            case 'shift':
+                let positions = parseInt(commandParts[1]);
+                for (let k = 0; k < positions; k++) {
+                    arr.push(arr.shift());
+                }
+                break;
+            case 'sumPairs':
+                let newArr = [];
+                while (arr.length > 0) {
+                    let a = arr.shift() || 0;
+                    let b = arr.shift() || 0;
+                    newArr.push(a + b);
+                }
+                arr = newArr;
+                break;
+            case 'print':
+                console.log('[ ' + arr.join(', ') + ' ]');
+                return;
         }
     }
-    
-    function contains(params) {
-        console.log(arr.indexOf(params[0]));
-    }
-
-    function remove(params) {
-        arr.splice(params[0], 1);
-    }
-
-    function shift(params) {
-        Array.prototype.push.apply(arr, arr.splice(0, params[0]));
-    }    
-
-    function sumPairs() {
-        let newArr = [];
-        for (let i = 0; i < arr.length; i+=2) {
-            newArr.push((arr[i] || 0) + (arr[i + 1] || 0));
-        }
-        arr = newArr;
-    }
-
-    function print() {
-        console.log("[ " + arr.join(", ") + " ]");
-    }
-
-    const actions = {
-        add: add,
-        addMany: addMany,
-        contains: contains,
-        remove: remove,
-        shift: shift,
-        sumPairs: sumPairs,
-        print: print
-    };
-
-    commands.forEach(function(command) {
-        const splitCommand = command.split(' ');
-        const action = splitCommand[0];
-        const params = splitCommand.slice(1).map(Number);
-        
-        if (typeof actions[action] === "function") {
-            actions[action](params);
-        } else {
-            console.error(`Command not recognized: ${action}`);
-        }
-    });
 }
 
-manipulator([1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2], ["sumPairs", "sumPairs", "addMany 0 -1 -2 -3", "print"]);
-
-
-//Gives 81/100 in Judge - https://judge.softuni.org/Contests/Compete/Index/1299#7
-
-//Need to come back and fix it!
+arrayManipulator([1, 2, 4, 5, 6, 7], ['add 1 8', 'contains 1', 'contains 3', 'print']);
+// arrayManipulator([1, 2, 3, 4, 5], ['addMany 5 9 8 7 6 5', 'contains 15', 'remove 3', 'shift 1', 'print']);
