@@ -1,100 +1,85 @@
-//original code by sve...
-
 function arrayManipulator(array, commands) {
-
+    array = array.map(Number);
+    
     let i = 0;
 
     while (commands[i] !== `print`) {
-
-        let fullCommand = commands[i]
-        let arrayCommand = fullCommand.split(` `)//цялата команда разделена в масив
-        let command = arrayCommand.shift(); // само текстовата команда,
+        let fullCommand = commands[i];
+        let arrayCommand = fullCommand.split(` `);
+        let command = arrayCommand.shift();
 
         switch (command) {
             case `add`:
-                add(array, arrayCommand[0], arrayCommand[1]);
+                add(array, Number(arrayCommand[0]), Number(arrayCommand[1]));
                 break;
-
             case `addMany`:
-                let indx = arrayCommand.shift();
-                addMany(array, Number(indx), arrayCommand)
+                let indx = Number(arrayCommand.shift());
+                addMany(array, indx, arrayCommand.map(Number));
                 break;
-
             case `contains`:
-                console.log(contains(array, arrayCommand[0]));
+                console.log(contains(array, Number(arrayCommand[0])));
                 break;
-
             case `remove`:
-                remove(array, arrayCommand[0]);
+                remove(array, Number(arrayCommand[0]));
                 break;
-
             case `shift`:
-                shift(array, arrayCommand[0]);
+                shift(array, Number(arrayCommand[0]));
                 break;
-
             case `sumPairs`:
                 array = sumPair(array);
                 break;
         }
-
         i++;
     }
 
-    console.log(`[ ${array.map(Number).join(`, `)} ]`);
+    console.log(`[ ${array.join(`, `)} ]`);
 
     function add(arr, index, element) {
-        return arr.splice(index, 0, element)
+        arr.splice(index, 0, element);
     }
-    function addMany(arr, index, element) {
-        for (let elToAdd of element) {
-            arr.splice(index, 0, elToAdd)
-            index++
-        };
 
-        return arr;
+    function addMany(arr, index, elements) {
+        for (let elToAdd of elements) {
+            arr.splice(index, 0, elToAdd);
+            index++;
+        }
     }
 
     function contains(arr, element) {
-        let result = arr.indexOf(Number(element));
-        return result;
+        return arr.indexOf(element);
     }
 
     function remove(arr, index) {
-        let result = arr.splice(index, 1);
-
-        return result;
+        arr.splice(index, 1);
     }
 
     function shift(arr, position) {
-        for (let i = 0; i < Number(position); i++) {
-            arr.push(arr.shift())
+        for (let i = 0; i < position; i++) {
+            arr.push(arr.shift());
         }
-
-        return arr
     }
 
     function sumPair(arr) {
-
-        let numbArr = arr.map(Number)
         let sum = [];
-
-        while (numbArr.length > 0) {
-
-            let firstElement = numbArr.shift();
-            if (numbArr.length == 0) {
+        while (arr.length > 0) {
+            let firstElement = arr.shift();
+            if (arr.length === 0) {
                 sum.push(firstElement);
                 break;
             }
-            let secondElement = numbArr.shift();
-            sum.push(firstElement + secondElement)
+            let secondElement = arr.shift();
+            sum.push(firstElement + secondElement);
         }
-
         return sum;
     }
 }
 
-arrayManipulator[1, 2, 4, 5, 6, 7],
-["add 1 8", "contains 1", "contains -3", "print"];
+arrayManipulator(
+    [1, 2, 4, 5, 6, 7], 
+    ["add 1 8", "contains 1", "contains -3", "print"]
+);
 
-arrayManipulator[1, 2, 3, 4, 5],
-["addMany 5 9 8 7 6 5", "contains 15", "remove 3", "shift 1", "print"];
+arrayManipulator(
+    [1, 2, 3, 4, 5], 
+    ["addMany 5 9 8 7 6 5", "contains 15", "remove 3", "shift 1", "print"]
+);
