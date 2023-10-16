@@ -1,4 +1,4 @@
-My Path with SoftUni as a Programmer
+My Path with SoftUni as a Programmer.
 Welcome to my personal journey as a programmer with SoftUni (Software University)! This repository serves as an archive, showcasing my progress, experiences, and challenges throughout my time at SoftUni. I hope this can provide valuable insights and inspiration to fellow students and aspiring developers alike.
 
 Table of Contents
