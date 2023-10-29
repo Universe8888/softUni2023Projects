@@ -1,5 +1,4 @@
 function sortedCatalog(products) {
-    // First, we parse the input strings to obtain the product names and prices
     let parsedProducts = products.map(productStr => {
         let [name, price] = productStr.split(' : ');
         return {
@@ -8,7 +7,6 @@ function sortedCatalog(products) {
         };
     });
 
-    // We then sort the parsed products first by their name, then by their price
     parsedProducts.sort((a, b) => {
         if (a.name.toLowerCase() === b.name.toLowerCase()) {
             return a.price - b.price;
@@ -16,10 +14,8 @@ function sortedCatalog(products) {
         return a.name.localeCompare(b.name);
     });
 
-    // We will store our results in this array
     let result = [];
 
-    // Now, we will process each product and group them by their first letter
     let currentLetter = '';
     for (let product of parsedProducts) {
         if (product.name[0] !== currentLetter) {
@@ -29,7 +25,6 @@ function sortedCatalog(products) {
         result.push(`  ${product.name}: ${product.price}`);
     }
 
-    // Finally, we return the results, joined by newline characters
     return result.join('\n');
 }
 
