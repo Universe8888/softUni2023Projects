@@ -1,41 +1,48 @@
-function calculateCardValues(inputArray) {
-    const playerCards = {};
+function calculateCardValues(input) {
+    const players = {};
+    const cardValues = {
+        '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10,
+        'J': 11, 'Q': 12, 'K': 13, 'A': 14
+    };
+    const typeMultiplier = { 'S': 4, 'H': 3, 'D': 2, 'C': 1 };
 
-    inputArray.forEach(string => {
-        const [name, cardsString] = string.split(': ');
-        const cards = cardsString.split(', ');
+    input.forEach(line => {
+        const [player, cards] = line.split(': ');
+        if (!players[player]) players[player] = new Set();
 
-        if (!playerCards.hasOwnProperty(name)) {
-            playerCards[name] = {};
-        }
-
-        cards.forEach(card => {
-            playerCards[name][card] = true;
+        cards.split(', ').forEach(card => {
+            players[player].add(card);
         });
     });
 
-    const cardValue = card => {
-        const power = card.length === 3 ? card.slice(0, 2) : card.slice(0, 1);
-        const type = card.slice(-1);
-        const powerValue = power >= '2' && power <= '10' ? parseInt(power) : (power === 'J' ? 11 : (power === 'Q' ? 12 : (power === 'K' ? 13 : 14)));
-        const typeMultiplier = type === 'S' ? 4 : (type === 'H' ? 3 : (type === 'D' ? 2 : 1));
-        return powerValue * typeMultiplier;
-    };
-
-    for (const name in playerCards) {
-        const totalValue = Object.keys(playerCards[name]).reduce((sum, card) => sum + cardValue(card), 0);
-        console.log(`${name}: ${totalValue}`);
+    for (const [player, cards] of Object.entries(players)) {
+        let score = 0;
+        cards.forEach(card => {
+            const type = card.slice(-1);
+            const power = card.slice(0, -1);
+            score += cardValues[power] * typeMultiplier[type];
+        });
+        console.log(`${player}: ${score}`);
     }
 }
 
-const inputArray = [
+calculateCardValues([
     'Peter: 2C, 4H, 9H, AS, QS',
-    'Tomas: 3H, 10S, JC, KD, 5S, 10S',
+    'Thomas: 3H, 10S, JC, KD, 5S, 10S',
     'Andrea: QH, QC, QS, QD',
-    'Tomas: 6H, 7S, KC, KD, 5S, 10C',
+    'Thomas: 6H, 7S, KC, KD, 5S, 10C',
     'Andrea: QH, QC, JS, JD, JC',
     'Peter: JD, JD, JD, JD, JD, JD'
-];
-calculateCardValues(inputArray);
+]);
 
-// 20 / 100 in Judge
+// calculateCardValues([
+//     'John: 2C, 4H, 9H, AS, QS',
+//     'Slav: 3H, 10S, JC, KD, 5S, 10S',
+//     'Alex: 6H, 7S, KC, KD, 5S, 10C',
+//     'Thomas: QH, QC, JS, JD, JC',
+//     'Slav: 6H, 7S, KC, KD, 5S, 10C',
+//     'Thomas: QH, QC, JS, JD, JC',
+//     'Alex: 6H, 7S, KC, KD, 5S, 10C',
+//     'Thomas: QH, QC, JS, JD, JC',
+//     'John: JD, JD, JD, JD'
+// ]);
