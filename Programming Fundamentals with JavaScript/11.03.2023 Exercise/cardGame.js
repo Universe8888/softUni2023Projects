@@ -1,28 +1,38 @@
 function calculateCardValues(input) {
     const players = {};
-    const cardValues = {
-        '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10,
-        'J': 11, 'Q': 12, 'K': 13, 'A': 14
-    };
-    const typeMultiplier = { 'S': 4, 'H': 3, 'D': 2, 'C': 1 };
 
-    input.forEach(line => {
+    function parseCard(card) {
+        const valueMap = { 'J': 11, 'Q': 12, 'K': 13, 'A': 14 };
+        const typeMultiplier = { 'S': 4, 'H': 3, 'D': 2, 'C': 1 };
+
+        const power = card.slice(0, -1);
+        const type = card.slice(-1);
+
+        const value = isNaN(power) ? valueMap[power] : parseInt(power);
+        return value * typeMultiplier[type];
+    }
+
+    function processInput(line) {
         const [player, cards] = line.split(': ');
         if (!players[player]) players[player] = new Set();
 
         cards.split(', ').forEach(card => {
             players[player].add(card);
         });
-    });
+    }
 
-    for (const [player, cards] of Object.entries(players)) {
+    function calculateScore(cards) {
         let score = 0;
         cards.forEach(card => {
-            const type = card.slice(-1);
-            const power = card.slice(0, -1);
-            score += cardValues[power] * typeMultiplier[type];
+            score += parseCard(card);
         });
-        console.log(`${player}: ${score}`);
+        return score;
+    }
+
+    input.forEach(processInput);
+
+    for (const [player, cards] of Object.entries(players)) {
+        console.log(`${player}: ${calculateScore(cards)}`);
     }
 }
 
@@ -46,3 +56,5 @@ calculateCardValues([
 //     'Thomas: QH, QC, JS, JD, JC',
 //     'John: JD, JD, JD, JD'
 // ]);
+
+//nested func
