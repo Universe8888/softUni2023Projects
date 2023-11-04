@@ -29,7 +29,8 @@ const input1 = [
     'IN, CA2844AA',
     'OUT, CA2866HI',
     'IN, CA9876HH',
-    'IN, CA2822UU'
+    'IN, CA2822UU',
+    'IN, CA5759XM' 
   ];
   
   const input2 = [
