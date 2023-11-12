@@ -3,11 +3,11 @@ function findWord(word, text) {
     const lowerCaseText = text.toLowerCase();
 
     if (lowerCaseText.includes(lowerCaseWord)) {
-        console.log(word);
+        console.log(lowerCaseWord);
 
         return
     } else {
-        console.log(`${word} not found!`);
+        console.log(`${lowerCaseWord} not found!`);
     }
 }
 
