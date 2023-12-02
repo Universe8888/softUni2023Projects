@@ -21,7 +21,7 @@ This repository is designed to:
 - Engage with and contribute to the broader development community.
 
 ## Advanced Coursework
-Here, I delve into the advanced courses completed at SoftUni and beyond, including specialized workshops and certifications in areas like AI, machine learning, and cloud computing.
+Here, I delve into the advanced courses completed at SoftUni and beyond, including specialized workshops and certifications.
 
 ## Signature Projects
 This section highlights ambitious projects that epitomize my skills in software engineering. These include:
