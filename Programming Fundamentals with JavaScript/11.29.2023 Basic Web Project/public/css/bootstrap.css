@@ -137,6 +137,7 @@ html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
+  appearance: button;
   cursor: pointer;
 }
 button[disabled],
@@ -164,6 +165,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 input[type="search"] {
   -webkit-appearance: textfield;
+  appearance: textfield;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
@@ -2603,6 +2605,7 @@ textarea.form-control {
 }
 input[type="search"] {
   -webkit-appearance: none;
+  appearance: none;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   input[type="date"].form-control,
@@ -5866,6 +5869,7 @@ button.close {
   background: transparent;
   border: 0;
   -webkit-appearance: none;
+  appearance: none;
 }
 .modal-open {
   overflow: hidden;
