@@ -43,7 +43,6 @@ I highly value collaboration and believe in the power of community-driven develo
 4. Push to the branch (`git push origin feature/YourFeature`).
 5. Submit a Pull Request with a comprehensive description of changes.
 
-For detailed guidelines, refer to the [Contributing.md](Contributing.md) document.
 
 ## Acknowledgments
 Special thanks to:
